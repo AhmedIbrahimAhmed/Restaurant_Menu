@@ -242,7 +242,7 @@ let dishes = [
     {
         name: "Pizza",
         price: 16.25,
-        category: "fast fooed",
+        category: "fast food",
         image: "https://media.istockphoto.com/id/1388105989/photo/homemade-italian-pizza-carbonara-with-ham-and-basil-leaves-on-a-dark-background-top-view-with.jpg?s=1024x1024&w=is&k=20&c=VL-ynTeYtUSdnPVDjFXPmazwjxQf5PEJceIfFYRAQTY=",
         ingredients: "Bread, cheese, meat, vegetables"
     },
@@ -267,9 +267,7 @@ let dishes = [
         ingredients: "A slice of chicken breast, flour, eggs"
     }
 
-
-
-
+    
 ]
 
 
@@ -340,7 +338,10 @@ searchForm.addEventListener('submit',(e)=>{
 
     if (inputForSearch.value.trim()){
         
-        const filterDishes= dishes.filter(item => item.category === inputForSearch.value.trim() || item.price === parseFloat(inputForSearch.value.trim()) || item.name === inputForSearch.value.trim())
+        const filterDishes= dishes.filter(item => 
+            item.category.includes(inputForSearch.value.trim()) 
+        || Math.floor(item.price) === Math.floor(+inputForSearch.value.trim()) 
+        || item.name.includes(inputForSearch.value.trim()) )
         showDishes(filterDishes)
     }
 })
